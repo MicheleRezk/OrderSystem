@@ -1,0 +1,40 @@
+//list of suppliers
+[
+  {
+    "name": "Supplier A",
+    "products": {
+      "Ordinary": 1.15,
+      "Sugar-free": 1.25,
+      "Super": 1.85
+    },
+    "isServiceOfflineOnPublicHolidays": false,
+    "shippingConstant": 5,
+    "shippingPercentage": 0,
+    "freeDeliveryIfExceeds": 0 //free delivery if orders exceed this number
+
+  },
+  {
+    "name": "Supplier B",
+    "products": {
+      "Ordinary": 1.05,
+      "Sugar-free": 1.30,
+      "Super": 1.75
+    },
+    "isServiceOfflineOnPublicHolidays": true,
+    "shippingConstant": 5,
+    "shippingPercentage": 0,
+    "freeDeliveryIfExceeds": 50 //free delivery if orders exceed this number
+  },
+  {
+    "name": "Supplier C",
+    "producten": {
+      "gewone": 1.05,
+      "suikervrije": 1.20,
+      "super": 1.95
+    },
+    "isServiceOfflineOnPublicHolidays": false,
+    "shippingConstant": 0,
+    "shippingPercentage": 5,
+    "freeDeliveryIfExceeds": 0 //free delivery if orders exceed this number
+  }
+]

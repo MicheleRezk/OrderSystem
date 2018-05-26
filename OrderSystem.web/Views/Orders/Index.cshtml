@@ -1,0 +1,40 @@
+﻿@using OrderSystem.Domain;
+@using System.Collections.Generic;
+@model List<Order>
+
+@{
+    ViewBag.Title = "Orders";
+}
+
+
+<div class="row">
+    <center><h1>Waffles Orders</h1></center>
+    <div class="table-responsive">
+        <table class="table table-striped ">
+            <tr>
+                <th>Order Date</th>
+                <th>Ordinary Count</th>
+                <th>Sugar Free Count</th>
+                <th>Super Count</th>
+                <th>Cheapest Supplier</th>
+                <th>Total Cost</th>
+            </tr>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@Html.Encode(String.Format("{0:g}", order.OrderDate))</td>
+                    <td>@order.OrdinaryCount</td>
+                    <td>@order.SugarFreeCount</td>
+                    <td>@order.SuperCount</td>
+                    <td>@order.BestSupplier.Name</td>
+                    <td>&euro;@order.BestSupplier.TotalCost</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <hr />
+    <input type="button" class="btn btn-primary" value="New Order" onclick="location.href='@Url.Action("New", "Orders")'"/>
+</div>
+<div>
+
+</div>
