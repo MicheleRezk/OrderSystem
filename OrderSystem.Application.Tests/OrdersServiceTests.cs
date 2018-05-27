@@ -31,5 +31,73 @@ namespace OrderSystem.Application.Tests
             Assert.IsTrue(orders.Count > 0);
             Assert.IsInstanceOf(typeof(Order), orders[0]);
         }
+
+        //Constant Shipping
+        [Test()]
+        public void CalculateTotalCost_WithConstantShipping_Should_Return_RightCost()
+        {
+            //Arrange
+            var jsonService = new JsonService();
+            var suppliersService = new SuppliersService(jsonService);
+            var ordersService = new OrdersService(suppliersService, jsonService);
+
+            var supplier = new Supplier
+            {
+                Name = "Supplier D",
+                ShippingConstant = 10,
+                WaffleProducts = new Products
+                {
+                    Ordinary = 2,
+                    SugarFree = 2.5M,
+                    Super = 2.8M
+                }
+            };
+            var Order = new Order
+            {
+                OrdinaryCount = 2,
+                SugarFreeCount = 3,
+                SuperCount = 4
+            };
+            var expected = 29.9M;
+            //Act
+            var totalCost = ordersService.CalculateTotalCost(supplier, Order);
+
+            //Assert
+            Assert.IsTrue(totalCost == expected);
+        }
+
+        //Percentage Shipping
+        [Test()]
+        public void CalculateTotalCost_WithPercentageShipping_Should_Return_RightCost()
+        {
+            //Arrange
+            var jsonService = new JsonService();
+            var suppliersService = new SuppliersService(jsonService);
+            var ordersService = new OrdersService(suppliersService, jsonService);
+
+            var supplier = new Supplier
+            {
+                Name = "Supplier D",
+                ShippingPercentage = 6,
+                WaffleProducts = new Products
+                {
+                    Ordinary = 2,
+                    SugarFree = 2.5M,
+                    Super = 2.8M
+                }
+            };
+            var Order = new Order
+            {
+                OrdinaryCount = 2,
+                SugarFreeCount = 3,
+                SuperCount = 4
+            };
+            var expected = 21.094M;
+            //Act
+            var totalCost = ordersService.CalculateTotalCost(supplier, Order);
+
+            //Assert
+            Assert.IsTrue(totalCost == expected);
+        }
     }
 }

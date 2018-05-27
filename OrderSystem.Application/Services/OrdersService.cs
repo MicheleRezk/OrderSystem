@@ -104,7 +104,7 @@ namespace OrderSystem.Application.Services
         /// <param name="supplier"></param>
         /// <param name="order"></param>
         /// <returns>Total Cost</returns>
-        private decimal CalculateTotalCost(Supplier supplier, Order order)
+        public decimal CalculateTotalCost(Supplier supplier, Order order)
         {
             decimal totalCost = 0;
             decimal shippingCost = 0;
